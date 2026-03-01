@@ -1,0 +1,14 @@
+name: "Hello World Action"
+description: "Minimal bash action that prints a message"
+inputs:
+  message:
+    description: "Message to print"
+    required: false
+    default: "Hello, world from custom action!"
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        chmod +x ./entrypoint.sh
+        ./entrypoint.sh "${{ inputs.message }}"
+      shell: bash
